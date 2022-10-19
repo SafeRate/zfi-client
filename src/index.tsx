@@ -11,12 +11,10 @@ if (rootElement) {
   const root = createRoot(rootElement);
 
   root.render(
-    <React.StrictMode>
-      <ChakraProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ChakraProvider>
-    </React.StrictMode>
+    <ChakraProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ChakraProvider>
   );
 }
