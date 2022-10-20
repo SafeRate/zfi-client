@@ -21,10 +21,27 @@ const account3Address =
 const account3Mnemoic =
   "boss mask real sustain clean lizard patient lift section cloth tonight forget kick address wool world advice fold teach sand suffer galaxy scatter able donor";
 
+// managed by account 1
 const dgDollarAssetId = 17;
 
-const createDigiDollarsAsset = async (algodclient: Algodv2) => {
-  const params = await algodclient.getTransactionParams().do();
+const printAssetHolding = async function (
+  algodClient: Algodv2,
+  account: string,
+  assetid: number
+) {
+  let accountInfo = await algodClient.accountInformation(account).do();
+  for (let idx = 0; idx < accountInfo["assets"].length; idx++) {
+    let scrutinizedAsset = accountInfo["assets"][idx];
+    if (scrutinizedAsset["asset-id"] == assetid) {
+      let myassetholding = JSON.stringify(scrutinizedAsset, undefined, 2);
+      console.log("assetholdinginfo = " + myassetholding);
+      break;
+    }
+  }
+};
+
+const createDigiDollarsAsset = async (algodClient: Algodv2) => {
+  const params = await algodClient.getTransactionParams().do();
   const note = undefined; // arbitrary data to be stored in the transaction; here, none is stored
   const addr = account1Address;
   const defaultFrozen = false;
@@ -55,16 +72,63 @@ const createDigiDollarsAsset = async (algodclient: Algodv2) => {
   );
 
   const rawSignedTxn = txn.signTxn(mnemonicToSecretKey(account1Mnemonic).sk);
-  const tx = await algodclient.sendRawTransaction(rawSignedTxn).do();
+  const tx = await algodClient.sendRawTransaction(rawSignedTxn).do();
 
   let assetID = null;
-  const ptx = await algosdk.waitForConfirmation(algodclient, tx.txId, 4);
+  const ptx = await algosdk.waitForConfirmation(algodClient, tx.txId, 4);
   assetID = ptx["asset-index"];
   console.log(
     "Transaction " + tx.txId + " confirmed in round " + ptx["confirmed-round"]
   );
 
   console.log(`Assset ${unitName} is created. Asset ID ${assetID}`);
+};
+
+const optInAddressToReceivingAsset = async (algodClient: Algodv2) => {
+  const params = await algodClient.getTransactionParams().do();
+
+  const sender = account2Address;
+  const recipient = account2Address;
+  // We set revocationTarget to undefined as
+  // This is not a clawback operation
+  let revocationTarget = undefined;
+  // CloseReaminerTo is set to undefined as
+  // we are not closing out an asset
+  let closeRemainderTo = undefined;
+  // We are sending 0 assets
+  const amount = 0;
+  // signing and sending "txn" allows sender to begin accepting asset specified by creator and index
+  let opttxn = algosdk.makeAssetTransferTxnWithSuggestedParams(
+    sender,
+    recipient,
+    closeRemainderTo,
+    revocationTarget,
+    amount,
+    undefined,
+    dgDollarAssetId,
+    params
+  );
+
+  // Must be signed by the account wishing to opt in to the asset
+  let rawSignedTxn = opttxn.signTxn(mnemonicToSecretKey(account2Mnemoic).sk);
+  let opttx = await algodClient.sendRawTransaction(rawSignedTxn).do();
+  // Wait for confirmation
+  let confirmedTxn = await algosdk.waitForConfirmation(
+    algodClient,
+    opttx.txId,
+    4
+  );
+  //Get the completed Transaction
+  console.log(
+    "Transaction " +
+      opttx.txId +
+      " confirmed in round " +
+      confirmedTxn["confirmed-round"]
+  );
+
+  // You should now see the new asset listed in the account information
+  console.log("Account 3 = " + account2Address);
+  await printAssetHolding(algodClient, account2Address, dgDollarAssetId);
 };
 
 const App = () => {
@@ -79,6 +143,8 @@ const App = () => {
 
     (async () => {
       try {
+        // await printAssetHolding(algodClient, account2Address, dgDollarAssetId);
+        // await optInAddressToReceivingAsset(algodClient);
         // await createDigiDollarsAsset(algodClient);
         // const test = await getAccountBalances(algodClient, account1Address);
         // console.log("test", test);
