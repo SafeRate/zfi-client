@@ -5,6 +5,16 @@ import algosdk, {
 } from "algosdk";
 import { useEffect } from "react";
 import { AlgofiAMMClient, getAccountBalances, Pool } from "@algofi/amm-v0";
+import { loadStdlib } from "@reach-sh/stdlib";
+import MyAlgoConnect from "@reach-sh/stdlib/ALGO_MyAlgoConnect";
+import AlgorandWalletConnection from "./AlgorandWalletConnection";
+const reach = loadStdlib("ALGO");
+reach.setWalletFallback(
+  reach.walletFallback({
+    providerEnv: "LocalNet",
+    MyAlgoConnect,
+  })
+);
 
 // const account1Address =
 //   "NKSLVLXIHT72KBTFQBHH3ZJU3LRYGTEO5VPDDHHSIPLUDY26GGZOVQBFRQ";
@@ -25,19 +35,19 @@ import { AlgofiAMMClient, getAccountBalances, Pool } from "@algofi/amm-v0";
 // const dgDollarAssetId = 17;
 
 const account1Address =
-  "UY2SVJFCLWJ5HI5JWS2W5YWDJ2IYVTA7XIESJNKRQH3BUPRP6Z34WWSKMY";
+  "NIOZNHERQBVYVT5OCYHT4VAJI4OOROXSEQUUQR6YPHZMWHMCPNSAK4GKBE";
 const account1Mnemonic =
-  "rival mansion wood share language shadow control worth sting attitude word blur kiwi parrot time blossom moment beef moral session elite capital differ able clown";
+  "mechanic assume account hand hill lucky trip position total symbol next wrap subway scatter glass mechanic sound vacuum vintage pen abuse foster pizza ability friend";
 
 const account2Address =
-  "3R64ULPTTK5MXOO4QANNIC7PJCXIKCY6BT3JH3KOBTXP2FZ4WITQGWBEIU";
+  "VJSOWZXI3NOLZCGRN5Q4ZDGRCCIXYZKNB22BN7X4DW5WPGMKOXIGWHKJBA";
 const account2Mnemoic =
-  "sphere lawn limb leader army walnut bicycle liquid furnace mammal sunny music hope federal usual home portion inherit wire inflict lift today huge about step";
+  "oven gesture together once junk salad giant atom flavor blanket whisper boss broken unfold remember shell check brain list head aisle deliver symbol above employ";
 
 const account3Address =
-  "7GW2YIK2NREU5CKTWPKVBNBU4JPQ73QSDVH3CMM6Z6DB2RL3RZ6TC2WM5A";
+  "YQGYJEOGGKP44GSRLE47W5EJ2WKBV6MJOHBNWMW676QKY2CW5K75HJ734M";
 const account3Mnemoic =
-  "common kite legend vehicle spatial core distance wear pupil inherit leaf agent allow lyrics spot scatter deliver betray shine animal arch any blood ability disease";
+  "chapter board blast rural next vicious noise marine piece doll recycle train scout record income void wish define current obey scrub action master above describe";
 
 // managed by account 1
 const dgDollarAssetId = 1;
@@ -286,7 +296,12 @@ const App = () => {
     });
   }, []);
 
-  return <div>App</div>;
+  return (
+    <div>
+      App
+      {/* <AlgorandWalletConnection /> */}
+    </div>
+  );
 };
 
 export default App;
