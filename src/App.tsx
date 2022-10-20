@@ -4,25 +4,43 @@ import algosdk, {
   Algodv2,
 } from "algosdk";
 import { useEffect } from "react";
-import { AlgofiAMMClient, getAccountBalances } from "@algofi/amm-v0";
+import { AlgofiAMMClient, getAccountBalances, Pool } from "@algofi/amm-v0";
+
+// const account1Address =
+//   "NKSLVLXIHT72KBTFQBHH3ZJU3LRYGTEO5VPDDHHSIPLUDY26GGZOVQBFRQ";
+// const account1Mnemonic =
+//   "motion palm increase pluck exclude fatal nation blast nurse describe ghost puzzle banner mystery federal diagram deliver enough cherry thunder ski unique enjoy about visit";
+
+// const account2Address =
+//   "UYIUWVAS2OCZNFKSHRRCPIBFA3JGBALLLAHWP4XDTBODMWR4NBN7MBUBLA";
+// const account2Mnemoic =
+//   "smart delay marble spot cheese affair range purchase security chase display hello thank betray gesture sadness team twice lunar mention axis broken cradle abstract render";
+
+// const account3Address =
+//   "YOJDCYD35B3IPMVX74BLMGR3L5CWKZMMGXQ3G26H6IQQ7X42A3Z7VZKTM4";
+// const account3Mnemoic =
+//   "boss mask real sustain clean lizard patient lift section cloth tonight forget kick address wool world advice fold teach sand suffer galaxy scatter able donor";
+
+// // managed by account 1
+// const dgDollarAssetId = 17;
 
 const account1Address =
-  "NKSLVLXIHT72KBTFQBHH3ZJU3LRYGTEO5VPDDHHSIPLUDY26GGZOVQBFRQ";
+  "UY2SVJFCLWJ5HI5JWS2W5YWDJ2IYVTA7XIESJNKRQH3BUPRP6Z34WWSKMY";
 const account1Mnemonic =
-  "motion palm increase pluck exclude fatal nation blast nurse describe ghost puzzle banner mystery federal diagram deliver enough cherry thunder ski unique enjoy about visit";
+  "rival mansion wood share language shadow control worth sting attitude word blur kiwi parrot time blossom moment beef moral session elite capital differ able clown";
 
 const account2Address =
-  "UYIUWVAS2OCZNFKSHRRCPIBFA3JGBALLLAHWP4XDTBODMWR4NBN7MBUBLA";
+  "3R64ULPTTK5MXOO4QANNIC7PJCXIKCY6BT3JH3KOBTXP2FZ4WITQGWBEIU";
 const account2Mnemoic =
-  "smart delay marble spot cheese affair range purchase security chase display hello thank betray gesture sadness team twice lunar mention axis broken cradle abstract render";
+  "sphere lawn limb leader army walnut bicycle liquid furnace mammal sunny music hope federal usual home portion inherit wire inflict lift today huge about step";
 
 const account3Address =
-  "YOJDCYD35B3IPMVX74BLMGR3L5CWKZMMGXQ3G26H6IQQ7X42A3Z7VZKTM4";
+  "7GW2YIK2NREU5CKTWPKVBNBU4JPQ73QSDVH3CMM6Z6DB2RL3RZ6TC2WM5A";
 const account3Mnemoic =
-  "boss mask real sustain clean lizard patient lift section cloth tonight forget kick address wool world advice fold teach sand suffer galaxy scatter able donor";
+  "common kite legend vehicle spatial core distance wear pupil inherit leaf agent allow lyrics spot scatter deliver betray shine animal arch any blood ability disease";
 
 // managed by account 1
-const dgDollarAssetId = 17;
+const dgDollarAssetId = 1;
 
 const printAssetHolding = async function (
   algodClient: Algodv2,
@@ -131,6 +149,55 @@ const optInAddressToReceivingAsset = async (algodClient: Algodv2) => {
   await printAssetHolding(algodClient, account2Address, dgDollarAssetId);
 };
 
+const transferAsset = async ({
+  algodClient,
+  amount,
+  assetId,
+  recipient,
+  sender,
+  senderMnemoic,
+}: {
+  algodClient: Algodv2;
+  amount: number;
+  assetId: number;
+  recipient: string;
+  sender: string;
+  senderMnemoic: string;
+}) => {
+  const params = await algodClient.getTransactionParams().do();
+  const revocationTarget = undefined;
+  const closeRemainderTo = undefined;
+  const note = undefined;
+
+  const xtxn = algosdk.makeAssetTransferTxnWithSuggestedParams(
+    sender,
+    recipient,
+    closeRemainderTo,
+    revocationTarget,
+    amount,
+    note,
+    assetId,
+    params
+  );
+  const rawSignedTxn = xtxn.signTxn(mnemonicToSecretKey(senderMnemoic).sk);
+  const xtx = await algodClient.sendRawTransaction(rawSignedTxn).do();
+
+  const confirmedTxn = await algosdk.waitForConfirmation(
+    algodClient,
+    xtx.txId,
+    4
+  );
+  console.log(
+    "Transaction " +
+      xtx.txId +
+      " confirmed in round " +
+      confirmedTxn["confirmed-round"]
+  );
+
+  console.log("Account 3 = " + recipient);
+  await printAssetHolding(algodClient, recipient, assetId);
+};
+
 const App = () => {
   useEffect(() => {
     const token =
@@ -143,6 +210,14 @@ const App = () => {
 
     (async () => {
       try {
+        // await transferAsset({
+        //   algodClient,
+        //   amount: 10,
+        //   assetId: dgDollarAssetId,
+        //   recipient: account2Address,
+        //   sender: account1Address,
+        //   senderMnemoic: account1Mnemonic,
+        // });
         // await printAssetHolding(algodClient, account2Address, dgDollarAssetId);
         // await optInAddressToReceivingAsset(algodClient);
         // await createDigiDollarsAsset(algodClient);
@@ -202,6 +277,7 @@ const App = () => {
         // );
         // console.log("Transaction Fee: %d microAlgos", confirmedTxn.txn.txn.fee);
         // console.log("Account balance: %d microAlgos", accountInfo.amount);
+        console.log("Use effect finished");
       } catch (err) {
         console.log("err", err);
       }
