@@ -261,7 +261,6 @@ const MobileNav = ({
                 bg={useColorModeValue("white", "gray.900")}
                 borderColor={useColorModeValue("gray.200", "gray.700")}
               >
-                xx
                 <MenuItem>Portfolio</MenuItem>
                 <MenuItem>KYC/AML</MenuItem>
                 <MenuDivider />

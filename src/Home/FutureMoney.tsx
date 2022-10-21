@@ -47,7 +47,7 @@ const FutureMoney = (args: FutureMoneyArgs) => {
             color={"green.500"}
             rounded={"full"}
           >
-            {days} days
+            $100 in {days} days
           </Text>
           <Stack direction={"row"} align={"center"} justify={"center"}>
             <Text fontSize={"3xl"}>$</Text>
