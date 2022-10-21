@@ -51,7 +51,6 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "Future Money", icon: RiMoneyDollarBoxLine },
   { name: "Treasuries", icon: RiGovernmentLine },
   { name: "Home Loans", icon: FiHome },
-  { name: "Mortgage-backed Securities", icon: MdOutlineHomeWork },
   { name: "Pool", icon: GiPoolTriangle },
   { name: "Swap", icon: MdSwapHoriz },
 ];

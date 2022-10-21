@@ -1,14 +1,4 @@
-import {
-  Box,
-  Table,
-  TableCaption,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { Box, Table, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react";
 import React from "react";
 import {
   Chart as ChartJS,
@@ -50,8 +40,6 @@ export const Treasuries = (routeArgs: RouteArgs) => {
   for (let y = 0; y < years.length; y++) {
     datasetData.push({ x: years[y], y: yields[y] });
   }
-
-  console.log(datasetData);
 
   const data = {
     datasets: [
@@ -138,7 +126,7 @@ export const Treasuries = (routeArgs: RouteArgs) => {
               <Td>$98,700</Td>
               <Td>$100</Td>
               <Td>$99.11</Td>
-              <Td>2022-01-19</Td>
+              <Td>2023-01-19</Td>
               <Td>3.64%</Td>
             </Tr>
             <Tr>

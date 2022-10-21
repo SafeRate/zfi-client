@@ -9,6 +9,7 @@ import { Accounts } from "@randlabs/myalgo-connect";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./Home/Home";
+import HomeLoans from "./Loans/HomeLoans";
 import Swap from "./Swap/Swap";
 import Pool from "./Pool/Pool";
 import ScrollToTop from "./Route/ScrollToTop";
@@ -327,13 +328,13 @@ const App = () => {
             <Route
               path="/home-loans"
               element={
-                <Home
+                <HomeLoans
                   currentAccount={currentAccount}
                   setCurrentAccount={setCurrentAccount}
                 />
               }
             />
-            <Route
+            {/* <Route
               path="/mortgage-backed-securities"
               element={
                 <Home
@@ -341,7 +342,7 @@ const App = () => {
                   setCurrentAccount={setCurrentAccount}
                 />
               }
-            />
+            /> */}
             <Route path="/swap" element={<Swap />} />
             <Route path="/pool" element={<Pool />} />
             <Route path="*" element={<Navigate to="/" replace />} />
