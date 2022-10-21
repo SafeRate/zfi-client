@@ -13,6 +13,7 @@ import Swap from "./Swap/Swap";
 import Pool from "./Pool/Pool";
 import ScrollToTop from "./Route/ScrollToTop";
 import PageWrapper from "./Route/PageWrapper";
+import Treasuries from "./Treasuries/Treasuries";
 import PageLoader from "./Route/PageLoader";
 
 // const account1Address =
@@ -317,7 +318,7 @@ const App = () => {
             <Route
               path="/treasuries"
               element={
-                <Home
+                <Treasuries
                   currentAccount={currentAccount}
                   setCurrentAccount={setCurrentAccount}
                 />
