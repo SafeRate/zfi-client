@@ -12,13 +12,14 @@ import {
 import { CheckIcon } from "@chakra-ui/icons";
 
 type FutureMoneyArgs = {
+  apy: number;
   days: number;
   price: number;
   date: string;
 };
 
 const FutureMoney = (args: FutureMoneyArgs) => {
-  const { days, price, date } = args;
+  const { apy, days, price, date } = args;
 
   return (
     <Center py={6}>
@@ -53,7 +54,7 @@ const FutureMoney = (args: FutureMoneyArgs) => {
             <Text fontSize={"6xl"} fontWeight={800}>
               {price}
             </Text>
-            <Text color={"gray.500"}>/ per $100</Text>
+            <Text color={"gray.500"}> for $100</Text>
           </Stack>
         </Stack>
 
@@ -62,6 +63,10 @@ const FutureMoney = (args: FutureMoneyArgs) => {
             <ListItem>
               <ListIcon as={CheckIcon} color="green.400" />
               Receive $100 on {date}
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CheckIcon} color="green.400" />
+              {apy}% anuualized APY
             </ListItem>
           </List>
 

@@ -4,13 +4,13 @@ import algosdk, {
   Algodv2,
 } from "algosdk";
 import { Suspense, useEffect, useState } from "react";
-import { AlgofiAMMClient, getAccountBalances, Pool } from "@algofi/amm-v0";
+import { AlgofiAMMClient, getAccountBalances } from "@algofi/amm-v0";
 import { Accounts } from "@randlabs/myalgo-connect";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./Home/Home";
 import Swap from "./Swap/Swap";
-import TestPool from "./Pool/TestPool";
+import Pool from "./Pool/Pool";
 import ScrollToTop from "./Route/ScrollToTop";
 import PageWrapper from "./Route/PageWrapper";
 import PageLoader from "./Route/PageLoader";
@@ -341,18 +341,8 @@ const App = () => {
                 />
               }
             />
-            <Route
-              path="/swap"
-              element={
-                <Swap />
-              }
-            />
-            <Route
-              path="/pool"
-              element={
-                <Pool />
-              }
-            />
+            <Route path="/swap" element={<Swap />} />
+            <Route path="/pool" element={<Pool />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </RouteWrapper>

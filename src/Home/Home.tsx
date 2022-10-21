@@ -15,12 +15,32 @@ const Home = (routeArgs: RouteArgs) => {
     <Box>
       <Box>
         <Heading>$100 Treasuries</Heading>
-        
-        <SimpleGrid columns={[2, 2, 2, 2, 4]} spacing='20px'>
-        <FutureMoney price={99.71} days={30} date={"November 20, 2022"} />
-        <FutureMoney price={99.1} days={90} date={"January 19, 2023"} />
-        <FutureMoney price={97.92} days={180} date={"April 19, 2023"} />
-        <FutureMoney price={95.55} days={365} date={"October 20, 2023"} />
+
+        <SimpleGrid columns={[2, 2, 2, 2, 4]} spacing="20px">
+          <FutureMoney
+            price={99.71}
+            days={30}
+            date={"Nov 20, 2022"}
+            apy={3.54}
+          />
+          <FutureMoney
+            price={99.11}
+            days={90}
+            date={"Jan 19, 2023"}
+            apy={3.64}
+          />
+          <FutureMoney
+            price={97.92}
+            days={180}
+            date={"Apr 19, 2023"}
+            apy={4.31}
+          />
+          <FutureMoney
+            price={95.55}
+            days={365}
+            date={"Oct 20, 2023"}
+            apy={4.66}
+          />
         </SimpleGrid>
       </Box>
     </Box>
