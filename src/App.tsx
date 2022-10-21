@@ -9,6 +9,8 @@ import { Accounts } from "@randlabs/myalgo-connect";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./Home/Home";
+import Swap from "./Swap/Swap";
+import TestPool from "./Pool/TestPool";
 import ScrollToTop from "./Route/ScrollToTop";
 import PageWrapper from "./Route/PageWrapper";
 import PageLoader from "./Route/PageLoader";
@@ -337,6 +339,18 @@ const App = () => {
                   currentAccount={currentAccount}
                   setCurrentAccount={setCurrentAccount}
                 />
+              }
+            />
+            <Route
+              path="/swap"
+              element={
+                <Swap />
+              }
+            />
+            <Route
+              path="/pool"
+              element={
+                <Pool />
               }
             />
             <Route path="*" element={<Navigate to="/" replace />} />

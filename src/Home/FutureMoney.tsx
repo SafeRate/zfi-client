@@ -23,6 +23,7 @@ const FutureMoney = (args: FutureMoneyArgs) => {
   return (
     <Center py={6}>
       <Box
+        h="400px"
         maxW={"330px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
@@ -37,7 +38,7 @@ const FutureMoney = (args: FutureMoneyArgs) => {
           align={"center"}
         >
           <Text
-            fontSize={"sm"}
+            fontSize={"md"}
             fontWeight={500}
             bg={useColorModeValue("green.50", "green.900")}
             p={2}
@@ -78,7 +79,7 @@ const FutureMoney = (args: FutureMoneyArgs) => {
               bg: "green.500",
             }}
           >
-            Buy
+            Buy with USDC
           </Button>
         </Box>
       </Box>
