@@ -20,10 +20,10 @@ const HomeLoans = (routeArgs: RouteArgs) => {
     <Box>
       <Box>
         <Heading>Invest into a diversified pool of Safe Rate Mortgages</Heading>
-        <SimpleGrid columns={[2, 2, 2, 2, 4]} spacing="20px">
+        <SimpleGrid columns={[2, 2, 2, 2, 3]} spacing="20px">
           <Center py={6}>
             <Box
-              h="400px"
+             
               maxW={"330px"}
               w={"full"}
               bg={useColorModeValue("white", "gray.800")}
@@ -49,7 +49,7 @@ const HomeLoans = (routeArgs: RouteArgs) => {
                   WeFi SRM Series 1
                 </Text>
                 <Stack direction={"row"} align={"center"} justify={"center"}>
-                  <Text fontSize={"3xl"}>6.75%</Text>
+                  <Text fontSize={"3xl"} fontWeight="600">6.75%</Text>
                   <Text fontSize={"6xl"} fontWeight={800}></Text>
                   <Text color={"gray.500"}>weighted average interest rate</Text>
                 </Stack>
