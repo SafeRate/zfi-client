@@ -37,11 +37,11 @@ import {
                     <Input placeholder='0' size='lg' mr={1} />
                     <Select size='lg' placeholder='USDC' bg={useColorModeValue("gray.100", "green.900")}>
                         <option value='USDC'>USDC</option>
-                        <option value='WEFI.T20221120'>WEFI.T20221120</option>
-                        <option value='WEFI.T20230119'>WEFI.T20230119</option>
-                        <option value='WEFI.T20230119'>WEFI.T20230419</option>
-                        <option value='WEFI.T20230119'>WEFI.T20231020</option>
-                        <option value='WEFI.MORTGAGE'>WEFI.MORTGAGE</option>
+                        <option value='WEFIUST20221120'>WEFIUST20221120</option>
+                        <option value='WEFIUST20230119'>WEFIUST20230119</option>
+                        <option value='WEFIUST20230419'>WEFIUST20230419</option>
+                        <option value='WEFIUST20231020'>WEFIUST20231020</option>
+                        <option value='WEFISRMSERIES1'>WEFISRMSERIES1</option>
                     </Select>
                     
                 </Flex>
@@ -49,11 +49,11 @@ import {
                     <Input placeholder='0' size='lg' mr={1} />
                     <Select size='lg' placeholder='Select token' bg={useColorModeValue("green.300", "green.900")}>
                         <option value='USDC'>USDC</option>
-                        <option value='WEFI.T20221120'>WEFI.T20221120</option>
-                        <option value='WEFI.T20230119'>WEFI.T20230119</option>
-                        <option value='WEFI.T20230119'>WEFI.T20230419</option>
-                        <option value='WEFI.T20230119'>WEFI.T20231020</option>
-                        <option value='WEFI.MORTGAGE'>WEFI.MORTGAGE</option>
+                        <option value='WEFIUST20221120'>WEFIUST20221120</option>
+                        <option value='WEFIUST20230119'>WEFIUST20230119</option>
+                        <option value='WEFIUST20230419'>WEFIUST20230419</option>
+                        <option value='WEFIUST20231020'>WEFIUST20231020</option>
+                        <option value='WEFISRMSERIES1'>WEFISRMSERIES1</option>
                     </Select>
                     
                 </Flex>

@@ -46,11 +46,11 @@ const Pool = () => {
               
             >
               <option value="USDC">USDC</option>
-              <option value="WEFI.T20221120">WEFI.T20221120</option>
-              <option value="WEFI.T20230119">WEFI.T20230119</option>
-              <option value="WEFI.T20230119">WEFI.T20230419</option>
-              <option value="WEFI.T20230119">WEFI.T20231020</option>
-              <option value="WEFI.MORTGAGE">WEFI.MORTGAGE</option>
+              <option value='WEFIUST20221120'>WEFIUST20221120</option>
+                        <option value='WEFIUST20230119'>WEFIUST20230119</option>
+                        <option value='WEFIUST20230419'>WEFIUST20230419</option>
+                        <option value='WEFIUST20231020'>WEFIUST20231020</option>
+                        <option value='WEFISRMSERIES1'>WEFISRMSERIES1</option>
             </Select>
             <Select
               size="lg"
@@ -58,11 +58,11 @@ const Pool = () => {
               bg={useColorModeValue("gray.100", "green.900")}
             >
               <option value="USDC">USDC</option>
-              <option value="WEFI.T20221120" selected>WEFI.T20221120</option>
-              <option value="WEFI.T20230119">WEFI.T20230119</option>
-              <option value="WEFI.T20230119">WEFI.T20230419</option>
-              <option value="WEFI.T20230119">WEFI.T20231020</option>
-              <option value="WEFI.MORTGAGE">WEFI.MORTGAGE</option>
+              <option value='WEFIUST20221120' selected>WEFIUST20221120</option>
+                        <option value='WEFIUST20230119'>WEFIUST20230119</option>
+                        <option value='WEFIUST20230419'>WEFIUST20230419</option>
+                        <option value='WEFIUST20231020'>WEFIUST20231020</option>
+                        <option value='WEFISRMSERIES1'>WEFISRMSERIES1</option>
             </Select>
           </Flex>
           <Divider mt={3} />
@@ -75,11 +75,11 @@ const Pool = () => {
               bg={useColorModeValue("gray.100", "green.900")}
             >
               <option value="USDC" selected>USDC</option>
-              <option value="WEFI.T20221120" >WEFI.T20221120</option>
-              <option value="WEFI.T20230119">WEFI.T20230119</option>
-              <option value="WEFI.T20230119">WEFI.T20230419</option>
-              <option value="WEFI.T20230119">WEFI.T20231020</option>
-              <option value="WEFI.MORTGAGE">WEFI.MORTGAGE</option>
+              <option value='WEFIUST20221120'>WEFIUST20221120</option>
+                        <option value='WEFIUST20230119'>WEFIUST20230119</option>
+                        <option value='WEFIUST20230419'>WEFIUST20230419</option>
+                        <option value='WEFIUST20231020'>WEFIUST20231020</option>
+                        <option value='WEFISRMSERIES1'>WEFISRMSERIES1</option>
             </Select>
           </Flex>
           <Flex>
@@ -90,11 +90,11 @@ const Pool = () => {
               bg={useColorModeValue("green.300", "green.900")}
             >
               <option value="USDC">USDC</option>
-              <option value="WEFI.T20221120" selected>WEFI.T20221120</option>
-              <option value="WEFI.T20230119">WEFI.T20230119</option>
-              <option value="WEFI.T20230119">WEFI.T20230419</option>
-              <option value="WEFI.T20230119">WEFI.T20231020</option>
-              <option value="WEFI.MORTGAGE">WEFI.MORTGAGE</option>
+              <option value='WEFIUST20221120' selected>WEFIUST20221120</option>
+                        <option value='WEFIUST20230119'>WEFIUST20230119</option>
+                        <option value='WEFIUST20230419'>WEFIUST20230419</option>
+                        <option value='WEFIUST20231020'>WEFIUST20231020</option>
+                        <option value='WEFISRMSERIES1'>WEFISRMSERIES1</option>
             </Select>
           </Flex>
           <Button
