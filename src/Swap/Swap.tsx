@@ -19,7 +19,7 @@ import {
         <Center py={6}>
           <Box
            
-            maxW={"400px"}
+            maxW={"500px"}
             w={"full"}
             bg={useColorModeValue("white", "gray.800")}
             boxShadow={"2xl"}
@@ -37,11 +37,11 @@ import {
                     <Input placeholder='0' size='lg' mr={1} />
                     <Select size='lg' placeholder='USDC' bg={useColorModeValue("gray.100", "green.900")}>
                         <option value='USDC'>USDC</option>
-                        <option value='WEFI.T20221120'>WEFI.T20221120</option>
-                        <option value='WEFI.T20230119'>WEFI.T20230119</option>
-                        <option value='WEFI.T20230119'>WEFI.T20230419</option>
-                        <option value='WEFI.T20230119'>WEFI.T20231020</option>
-                        <option value='WEFI.MORTGAGE'>WEFI.MORTGAGE</option>
+                        <option value='WT221120'>WT221120</option>
+                        <option value='WT230119'>WT230119</option>
+                        <option value='WT230419'>WT230419</option>
+                        <option value='WT231020'>WT231020</option>
+                        <option value='WSRM0001'>WSRM0001</option>
                     </Select>
                     
                 </Flex>
@@ -49,11 +49,11 @@ import {
                     <Input placeholder='0' size='lg' mr={1} />
                     <Select size='lg' placeholder='Select token' bg={useColorModeValue("green.300", "green.900")}>
                         <option value='USDC'>USDC</option>
-                        <option value='WEFI.T20221120'>WEFI.T20221120</option>
-                        <option value='WEFI.T20230119'>WEFI.T20230119</option>
-                        <option value='WEFI.T20230119'>WEFI.T20230419</option>
-                        <option value='WEFI.T20230119'>WEFI.T20231020</option>
-                        <option value='WEFI.MORTGAGE'>WEFI.MORTGAGE</option>
+                        <option value='WT221120'>WT221120</option>
+                        <option value='WT230119'>WT230119</option>
+                        <option value='WT230419'>WT230419</option>
+                        <option value='WT231020'>WT231020</option>
+                        <option value='WSRM0001'>WSRM0001</option>
                     </Select>
                     
                 </Flex>
