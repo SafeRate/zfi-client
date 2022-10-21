@@ -3,13 +3,15 @@ import algosdk, {
   mnemonicToSecretKey,
   Algodv2,
 } from "algosdk";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { AlgofiAMMClient, getAccountBalances, Pool } from "@algofi/amm-v0";
-import CheckAlgoSigner from "./CheckAlgoSigner";
-import GetAccounts from "./GetAccounts";
-import MyAlgoConnectButton from "./util/MyAlgoConnect/MyAlgoConnectButton";
-import { Accounts, Address } from "@randlabs/myalgo-connect";
-import { Box, Code } from "@chakra-ui/react";
+import { Accounts } from "@randlabs/myalgo-connect";
+import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Home from "./Home/Home";
+import ScrollToTop from "./Route/ScrollToTop";
+import PageWrapper from "./Route/PageWrapper";
+import PageLoader from "./Route/PageLoader";
 
 // const account1Address =
 //   "NKSLVLXIHT72KBTFQBHH3ZJU3LRYGTEO5VPDDHHSIPLUDY26GGZOVQBFRQ";
@@ -294,21 +296,76 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      WeFi
-      {currentAccount ? (
-        <Box>
-          <Box>
-            <Code>{currentAccount.name}</Code>
-          </Box>
-          <Box>
-            <Code>{currentAccount.address}</Code>
-          </Box>
-        </Box>
-      ) : (
-        <MyAlgoConnectButton setCurrentAccount={setCurrentAccount} />
-      )}
-    </div>
+    <ChakraProvider>
+      <BrowserRouter>
+        <RouteWrapper
+          currentAccount={currentAccount}
+          setCurrentAccount={setCurrentAccount}
+        >
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  currentAccount={currentAccount}
+                  setCurrentAccount={setCurrentAccount}
+                />
+              }
+            />
+            <Route
+              path="/treasuries"
+              element={
+                <Home
+                  currentAccount={currentAccount}
+                  setCurrentAccount={setCurrentAccount}
+                />
+              }
+            />
+            <Route
+              path="/home-loans"
+              element={
+                <Home
+                  currentAccount={currentAccount}
+                  setCurrentAccount={setCurrentAccount}
+                />
+              }
+            />
+            <Route
+              path="/mortgage-backed-securities"
+              element={
+                <Home
+                  currentAccount={currentAccount}
+                  setCurrentAccount={setCurrentAccount}
+                />
+              }
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </RouteWrapper>
+      </BrowserRouter>
+    </ChakraProvider>
+  );
+};
+
+type RouteWrapperArgs = {
+  children: any;
+  currentAccount: Accounts | null;
+  setCurrentAccount: any;
+};
+
+const RouteWrapper = (args: RouteWrapperArgs) => {
+  const children = args.children;
+  const currentAccount = args.currentAccount;
+  const setCurrentAccount = args.setCurrentAccount;
+
+  return (
+    <ScrollToTop>
+      <PageWrapper
+        children={children}
+        currentAccount={currentAccount}
+        setCurrentAccount={setCurrentAccount}
+      ></PageWrapper>
+    </ScrollToTop>
   );
 };
 

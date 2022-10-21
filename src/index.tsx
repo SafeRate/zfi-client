@@ -12,9 +12,7 @@ if (rootElement) {
 
   root.render(
     <ChakraProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </ChakraProvider>
   );
 }
