@@ -11,6 +11,7 @@ import {
   Flex,
   Input,
   Select,
+  Divider,
 } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
 
@@ -18,7 +19,7 @@ const Pool = () => {
   return (
     <Center py={6}>
       <Box
-        maxW={"400px"}
+        maxW={"500px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
         boxShadow={"2xl"}
@@ -36,11 +37,13 @@ const Pool = () => {
           </Text>
 
           <Text>Select Pair</Text>
-          <Flex>
+          <Flex w="100%">
             <Select
               size="lg"
               placeholder="USDC"
               bg={useColorModeValue("gray.100", "green.900")}
+              mr={1}
+              
             >
               <option value="USDC">USDC</option>
               <option value="WEFI.T20221120">WEFI.T20221120</option>
@@ -55,13 +58,14 @@ const Pool = () => {
               bg={useColorModeValue("gray.100", "green.900")}
             >
               <option value="USDC">USDC</option>
-              <option value="WEFI.T20221120">WEFI.T20221120</option>
+              <option value="WEFI.T20221120" selected>WEFI.T20221120</option>
               <option value="WEFI.T20230119">WEFI.T20230119</option>
               <option value="WEFI.T20230119">WEFI.T20230419</option>
               <option value="WEFI.T20230119">WEFI.T20231020</option>
               <option value="WEFI.MORTGAGE">WEFI.MORTGAGE</option>
             </Select>
           </Flex>
+          <Divider mt={3} />
           <Text>Deposit Amounts</Text>
           <Flex>
             <Input placeholder="0" size="lg" mr={1} />
@@ -70,8 +74,8 @@ const Pool = () => {
               placeholder="USDC"
               bg={useColorModeValue("gray.100", "green.900")}
             >
-              <option value="USDC">USDC</option>
-              <option value="WEFI.T20221120">WEFI.T20221120</option>
+              <option value="USDC" selected>USDC</option>
+              <option value="WEFI.T20221120" >WEFI.T20221120</option>
               <option value="WEFI.T20230119">WEFI.T20230119</option>
               <option value="WEFI.T20230119">WEFI.T20230419</option>
               <option value="WEFI.T20230119">WEFI.T20231020</option>
@@ -86,7 +90,7 @@ const Pool = () => {
               bg={useColorModeValue("green.300", "green.900")}
             >
               <option value="USDC">USDC</option>
-              <option value="WEFI.T20221120">WEFI.T20221120</option>
+              <option value="WEFI.T20221120" selected>WEFI.T20221120</option>
               <option value="WEFI.T20230119">WEFI.T20230119</option>
               <option value="WEFI.T20230119">WEFI.T20230419</option>
               <option value="WEFI.T20230119">WEFI.T20231020</option>

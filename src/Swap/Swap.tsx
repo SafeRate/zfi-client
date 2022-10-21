@@ -19,7 +19,7 @@ import {
         <Center py={6}>
           <Box
            
-            maxW={"400px"}
+            maxW={"500px"}
             w={"full"}
             bg={useColorModeValue("white", "gray.800")}
             boxShadow={"2xl"}
