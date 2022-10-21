@@ -3,18 +3,13 @@ import algosdk, {
   mnemonicToSecretKey,
   Algodv2,
 } from "algosdk";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AlgofiAMMClient, getAccountBalances, Pool } from "@algofi/amm-v0";
-import { loadStdlib } from "@reach-sh/stdlib";
-import MyAlgoConnect from "@reach-sh/stdlib/ALGO_MyAlgoConnect";
-import AlgorandWalletConnection from "./AlgorandWalletConnection";
-const reach = loadStdlib("ALGO");
-reach.setWalletFallback(
-  reach.walletFallback({
-    providerEnv: "LocalNet",
-    MyAlgoConnect,
-  })
-);
+import CheckAlgoSigner from "./CheckAlgoSigner";
+import GetAccounts from "./GetAccounts";
+import MyAlgoConnectButton from "./util/MyAlgoConnect/MyAlgoConnectButton";
+import { Accounts, Address } from "@randlabs/myalgo-connect";
+import { Box, Code } from "@chakra-ui/react";
 
 // const account1Address =
 //   "NKSLVLXIHT72KBTFQBHH3ZJU3LRYGTEO5VPDDHHSIPLUDY26GGZOVQBFRQ";
@@ -209,6 +204,8 @@ const transferAsset = async ({
 };
 
 const App = () => {
+  const [currentAccount, setCurrentAccount] = useState<Accounts | null>(null);
+
   useEffect(() => {
     const token =
       "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
@@ -298,8 +295,19 @@ const App = () => {
 
   return (
     <div>
-      App
-      {/* <AlgorandWalletConnection /> */}
+      WeFi
+      {currentAccount ? (
+        <Box>
+          <Box>
+            <Code>{currentAccount.name}</Code>
+          </Box>
+          <Box>
+            <Code>{currentAccount.address}</Code>
+          </Box>
+        </Box>
+      ) : (
+        <MyAlgoConnectButton setCurrentAccount={setCurrentAccount} />
+      )}
     </div>
   );
 };

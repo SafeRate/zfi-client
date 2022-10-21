@@ -9,7 +9,6 @@
     "@chakra-ui/react": "^2.2.3",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@reach-sh/stdlib": "^0.1.12-rc.4",
     "add": "^2.0.6",
     "algosdk": "^1.22.0",
     "framer-motion": "^6.4.3",
