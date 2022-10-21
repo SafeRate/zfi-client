@@ -105,7 +105,7 @@ const HomeLoans = (routeArgs: RouteArgs) => {
                     bg: "green.500",
                   }}
                 >
-                  Buy $100 for 102.54 USDC
+                  Buy $100 for 100.54 USDC
                 </Button>
               </Box>
             </Box>
