@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import {
   IconButton,
-  Avatar,
   Box,
   CloseButton,
   Flex,
@@ -22,16 +21,7 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-  FiMenu,
-  FiBell,
-  FiChevronDown,
-} from "react-icons/fi";
+import { FiHome, FiMenu, FiChevronDown } from "react-icons/fi";
 import { GrConnect } from "react-icons/gr";
 import { GiPoolTriangle } from "react-icons/gi";
 import { BsPersonCheck } from "react-icons/bs";
